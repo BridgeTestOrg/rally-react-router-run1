@@ -205,3 +205,85 @@ summary::-webkit-details-marker {
     animation: none;
   }
 }
+
+/* ---- Live section (isolated, live-prefixed) ---- */
+@layer components {
+.live-section {
+  position: relative;
+}
+.live-stamp {
+  margin-top: 12px;
+  min-height: 2.8em; /* reserved so wrapping never moves the grid */
+}
+@media (min-width: 1025px) {
+  .live-stamp {
+    position: absolute;
+    top: 0;
+    right: var(--spacing-gutter);
+    margin-top: 0;
+    min-height: 0;
+    max-width: 45%;
+    text-align: right;
+  }
+}
+.live-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+@media (min-width: 1025px) {
+  .live-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.live-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 230px;
+  padding: 20px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1024px) {
+  .live-card {
+    min-height: 250px;
+  }
+}
+.live-divider {
+  margin-block: 14px;
+  border: 0;
+  border-top: 1px solid var(--color-line);
+}
+.live-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-block: 16px;
+}
+.live-skel {
+  max-width: 100%;
+  border-radius: 6px;
+}
+.live-result {
+  margin-top: 24px;
+  min-height: 750px; /* three stacked card heights plus two gaps */
+}
+@media (min-width: 1025px) {
+  .live-result {
+    min-height: 230px;
+  }
+}
+.live-notice {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--color-paper);
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius-card);
+}
+}
