@@ -52,10 +52,11 @@ export function LiveCard({ city }: { city: LiveCardData }) {
           <Badge tone={TONES[city.verdictKey]}>{city.verdictLabel}</Badge>
         </div>
       ) : null}
+      <hr className="live-divider" />
       <dl className="live-stats">
         {stats.map((s) => (
           <div key={s.label}>
-            <dd className="text-card-title text-ink">{s.value}</dd>
+            <dd className="live-value text-ink">{s.value}</dd>
             <dt className="text-small text-muted">{s.label}</dt>
           </div>
         ))}

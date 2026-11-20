@@ -48,7 +48,10 @@ export function LiveSection(props: {
             >
               {(live) => (
                 <div aria-busy="false">
-                  <p className="live-stamp text-small text-muted">{live.stampText}</p>
+                  <p className="live-stamp text-small text-muted">
+                    <span className="live-dot" aria-hidden="true" />
+                    {live.stampText}
+                  </p>
                   {live.allUnavailable ? (
                     <div className="live-result">
                       <LiveNotice />
