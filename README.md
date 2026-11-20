@@ -102,3 +102,32 @@ npm test           # Vitest
 npm run typecheck
 npm run build
 ```
+
+## Court and conditions JSON API (RRR-3)
+
+Both endpoints are loader-only resource routes (`app/routes/api.courts.ts`, `app/routes/api.conditions.ts`).
+
+### `GET /api/courts`
+
+Query: `state` (`all`|`CO`|`CA`|`NJ`), `day` (`today`|`tomorrow`|`sat`), `time` (`any`|`am`|`pm`|`eve`), `lights=1`, `parking=1`. Missing, empty or unknown values default to `all`, `today`, `any`, off, off (no 4xx); booleans are enabled only by the exact value `1`.
+
+- Everything is computed in each court's own time zone at the request time (`now()` from `config.server.ts`).
+- Windows: `am` is before 12:00, `pm` is 12:00 to before 17:00, `eve` is 17:00 or later. Today excludes slots starting at or before the current local time. `sat` is the coming Saturday, or today when today is Saturday.
+- An empty query returns all six courts in data order. Otherwise a court needs a slot on the selected day, except that a court closed on that date (closure) or at/past closing when the day is today stays listed with no slots. A court that has not opened yet is not retained.
+- `openNow`, `status` and `closedReason` always describe the current local date; `slots.today|tomorrow|sat` are all filled by the same slot rules.
+
+### `GET /api/conditions`
+
+One entry per city in CO, CA, NJ order. Weather comes from the NWS (`WEATHER_URL`), sent with `User-Agent: Rally test app (hello@example.com)`, redirects rejected, and the `forecastHourly` URL must share `WEATHER_URL`'s origin. One 3 s deadline covers both requests and body parsing per city. Only successes are cached (10 minutes, reused only for the same court and a slot inside the cached forecast period); concurrent identical requests share one in-flight operation.
+
+`updatedAt`: the original fetch time for a success (cache hits keep it), the caller's attempt time (city zone) for a failed fetch, `null` when there is no open slot in the next seven days.
+
+### Accepted standards exceptions
+
+1. Resource routes are loader-only (no default component, no action).
+2. Invalid or absent filters default rather than returning 4xx.
+3. `weather.server.ts` keeps a bounded process-local success cache and in-flight registry.
+
+### Integration points for later work
+
+`getConditions(now())`, `listCourts(filters, now)` and `getCourtById(id)` are the server entry points; the live page can return the conditions promise without awaiting it. `app/routes/home.tsx` and the section loaders are intentionally unchanged.
