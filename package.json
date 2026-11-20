@@ -5,11 +5,14 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
+    "db:migrate": "node scripts/db-migrate.ts",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "test": "vitest run"
   },
   "dependencies": {
+    "@fontsource/bricolage-grotesque": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
     "@react-router/node": "^8.5.1",
     "@react-router/serve": "^8.5.1",
     "isbot": "^5.1.36",

@@ -1,0 +1,159 @@
+{
+  "about": "Every string on the Rally page. Use these exactly. {name} marks a value filled in at run time, written as shown in formats.",
+  "formats": {
+    "about": "How filled-in values look. Times are always the court's or city's local time.",
+    "time": { "example": "6:00 pm", "rule": "12-hour, hours without a leading zero, always two-digit minutes, lowercase am/pm. Slot chips, local time and next open." },
+    "hour": { "example": "10 pm", "rule": "12-hour, hour only, lowercase am/pm. Opening hours." },
+    "date": { "example": "2 Nov", "rule": "Day without a leading zero, then the three-letter month. The date someone joined the waitlist." },
+    "weekday": { "example": "Saturday", "rule": "The full weekday name. Next open on a later day, and closures." }
+  },
+  "site": {
+    "name": "rally",
+    "title": "Rally: outdoor pickleball courts in Highlands Ranch, Santa Monica and Hoboken",
+    "description": "Rally shows which public outdoor pickleball courts in Highlands Ranch, Santa Monica and Hoboken are open and playable, with live wind, rain and temperature."
+  },
+  "header": {
+    "navLabel": "Main",
+    "nav": [
+      { "label": "Courts", "href": "#courts" },
+      { "label": "How it works", "href": "#how" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "cta": "Join the waitlist"
+  },
+  "hero": {
+    "eyebrow": "Opening in three cities this spring",
+    "headline": "Book a court.",
+    "headlineAccent": "Know the wind first.",
+    "lead": "Rally shows which outdoor pickleball courts are open and playable, then holds one for you in two taps.",
+    "primaryCta": "Join the waitlist",
+    "secondaryCta": "See live courts",
+    "courtArtLabel": "Illustration of a pickleball court from above",
+    "card": {
+      "default": { "badge": "3 cities", "name": "Six public courts", "line": "Highlands Ranch · Santa Monica · Hoboken" },
+      "nearYouBadge": "Near you",
+      "byTimeZone": {
+        "America/Denver": { "name": "Highlands Ranch, CO", "line": "Northridge Park · Redstone Park" },
+        "America/Los_Angeles": { "name": "Santa Monica, CA", "line": "Ocean Park · Memorial Park" },
+        "America/New_York": { "name": "Hoboken, NJ", "line": "Pier A Park · Church Square Park" }
+      }
+    }
+  },
+  "live": {
+    "eyebrow": "Live conditions",
+    "heading": "Next open court in each city",
+    "stamp": "National Weather Service · updated {minutes} min ago",
+    "stampJustNow": "National Weather Service · updated just now",
+    "stampLoading": "Loading live conditions…",
+    "stampDown": "National Weather Service · last checked {minutes} min ago",
+    "localTime": "{time} local time",
+    "labels": { "temp": "Temp", "wind": "Wind", "rain": "Rain" },
+    "units": { "temp": "{value}°", "wind": "{value} mph", "rain": "{value}%" },
+    "nextOpen": "Next open: {court}, {time}",
+    "nextOpenTomorrow": "Next open: {court}, tomorrow {time}",
+    "nextOpenLater": "Next open: {court}, {weekday} {time}",
+    "noOpenSlot": "No open slots in the next week",
+    "verdicts": { "playable": "Playable", "breezy": "Breezy", "notToday": "Not today" },
+    "cityUnavailable": "Conditions unavailable for {city} right now.",
+    "cityUnavailableNote": "Courts are still bookable.",
+    "allUnavailableTitle": "Live conditions are unavailable right now.",
+    "allUnavailableBody": "Courts are still bookable. Check the sky before you go. We'll try again in a minute."
+  },
+  "finder": {
+    "eyebrow": "Court finder",
+    "heading": "Find an open court",
+    "formLabel": "Filter courts",
+    "groups": { "state": "State", "day": "Day", "time": "Time", "mustHave": "Must have" },
+    "states": { "all": "All", "CO": "CO", "CA": "CA", "NJ": "NJ" },
+    "days": { "today": "Today", "tomorrow": "Tomorrow", "sat": "Saturday" },
+    "times": { "any": "Any", "am": "Morning", "pm": "Afternoon", "eve": "Evening" },
+    "lights": "Lights after dark",
+    "parking": "Free parking",
+    "submitNoScript": "Show courts",
+    "clear": "Clear filters",
+    "countOne": "1 court open {day}",
+    "countMany": "{count} courts open {day}",
+    "countNone": "No courts open {day}",
+    "dayPhrases": { "today": "today", "tomorrow": "tomorrow", "sat": "on Saturday" },
+    "localNote": "Times are local to each court.",
+    "meta": "{city}, {state} · {courts} courts",
+    "metaLights": " · lights",
+    "metaParking": " · free parking",
+    "openCount": "{count} open",
+    "closedBadge": "Closed",
+    "statusOpenUntil": "Open until {time}",
+    "statusClosedNow": "Closed now · opens 7 am",
+    "statusHoursWithLights": "Open 7 am to 10 pm",
+    "statusHoursWithoutLights": "Open 7 am to 7 pm",
+    "statusClosure": "Closed {dayName} for {reason}",
+    "emptyTitle": "No courts match those filters.",
+    "emptyBody": "Try another state or time, or drop a must-have."
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "heading": "Check, pick, play",
+    "steps": [
+      { "title": "Check the wind", "body": "Every outdoor court gets a live verdict: playable, breezy or not today." },
+      { "title": "Pick a slot", "body": "Filter by state, day, time, lights and parking. Open slots show at a glance." },
+      { "title": "Hold the court", "body": "Rally holds it for 20 minutes while you round up three friends." }
+    ]
+  },
+  "waitlist": {
+    "eyebrow": "Opening this spring",
+    "heading": "Get on the court list",
+    "lead": "We're opening one city at a time. Join the list and we'll tell you when your courts go live.",
+    "perks": [
+      "Live wind and rain for every outdoor court",
+      "20-minute holds while you find a four",
+      "Free to join, one email when you're in"
+    ],
+    "fields": {
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "city": "City",
+      "level": "Skill level"
+    },
+    "cities": {
+      "highlands-ranch": "Highlands Ranch, CO",
+      "santa-monica": "Santa Monica, CA",
+      "hoboken": "Hoboken, NJ"
+    },
+    "levels": { "new": "New to it", "mid": "Rallying", "pro": "Competitive" },
+    "submit": "Join the waitlist",
+    "submitting": "Joining…",
+    "fine": "One email when your courts open. No spam, unsubscribe any time.",
+    "errors": {
+      "email": "Enter an email address like sam@example.com.",
+      "city": "Choose a city.",
+      "level": "Choose a skill level.",
+      "server": "Something went wrong. Try again in a minute."
+    },
+    "duplicate": {
+      "badge": "Already on the list",
+      "title": "You're already on the list.",
+      "body": "{email} joined the {city} list on {date}. We'll email you when your courts open."
+    },
+    "success": {
+      "badge": "You're on the list",
+      "title": "You're #{place} for {city}.",
+      "body": "We'll email {email} when your courts open. Tell a friend: four players fill a court.",
+      "cta": "Browse courts"
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "heading": "Questions",
+    "items": [
+      { "q": "How do you know if a court is playable?", "a": "We use the National Weather Service hourly forecast for each court's next open time. Under 12 mph of wind, under a 30% chance of rain and above 40°F is playable." },
+      { "q": "Does it cost anything?", "a": "Not while we're in beta. Joining the waitlist is free too." },
+      { "q": "Which courts are on Rally?", "a": "Public outdoor courts in Highlands Ranch, Colorado; Santa Monica, California; and Hoboken, New Jersey to start." },
+      { "q": "When are courts open?", "a": "Courts with lights are open 7 am to 10 pm. Courts without lights close at 7 pm. All times are local to the court. When a court closes for a day for repairs, the court finder says so." },
+      { "q": "Can I book indoor courts?", "a": "Not yet. Indoor courts don't care about the wind, so we're starting outside." }
+    ]
+  },
+  "footer": {
+    "legal": "© Rally (a made-up company for a Bridge test project)",
+    "faq": "FAQ",
+    "email": "hello@example.com"
+  }
+}
