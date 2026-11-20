@@ -7,7 +7,7 @@ export function Hero() {
   const { hero } = content;
   return (
     <section className="bg-court pb-16 stack:pb-20">
-      <div className="container-page grid items-center gap-10 pt-8 stack:grid-cols-2 stack:gap-12 stack:pt-12">
+      <div className="container-page grid items-center gap-10 pt-8 stack:grid-cols-[1.35fr_1fr] stack:gap-12 stack:pt-12">
         <div>
           <p className="text-eyebrow text-ball">{hero.eyebrow}</p>
           <h1 className="text-hero mt-4">

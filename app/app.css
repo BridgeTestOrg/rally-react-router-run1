@@ -63,6 +63,8 @@ body {
   line-height: 1.55;
 }
 
+/* Custom classes live in the components layer so Tailwind utilities can override them. */
+@layer components {
 /* Centered 1160px container, 24px gutters (16px at 520px and below). */
 .container-page {
   box-sizing: border-box;
@@ -92,7 +94,7 @@ body {
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.02em;
-  font-size: clamp(2.5rem, 1.2rem + 5.2vw, 4.75rem);
+  font-size: clamp(2.5rem, 1rem + 4.4vw, 4.75rem);
 }
 .text-section {
   font-family: var(--font-display);
@@ -131,6 +133,7 @@ body {
   border: 1px solid var(--color-line);
   border-radius: var(--radius-card);
 }
+}
 
 /* Focus ring. Containers of focusable controls must not clip it. */
 :focus-visible {
@@ -141,12 +144,11 @@ body {
   box-shadow: 0 0 0 2px #ffffff;
 }
 
+@layer components {
 /* How-it-works step numbers: structural, not part of the spoken content. */
 .steps {
   counter-reset: step;
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 .steps > li {
   counter-increment: step;
@@ -154,6 +156,7 @@ body {
 .step-number::before {
   content: counter(step);
   content: counter(step) / "";
+}
 }
 
 /* Native FAQ summary: hide the browser marker, the plus is drawn in markup. */
@@ -164,6 +167,7 @@ summary::-webkit-details-marker {
   display: none;
 }
 
+@layer components {
 /* Shared loading primitives for later sections. */
 .shimmer {
   background: linear-gradient(
@@ -183,6 +187,8 @@ summary::-webkit-details-marker {
   border-radius: 999px;
   animation: spin 0.8s linear infinite;
 }
+}
+
 @keyframes shimmer {
   to {
     background-position: -200% 0;

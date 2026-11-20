@@ -38,7 +38,7 @@ export function HeroCard() {
       </div>
       <div>
         <p className="text-card-title min-h-[1.5rem] text-base font-bold">{card.name}</p>
-        <p className="text-small min-h-[2.75rem] text-ink">{card.line}</p>
+        <p className="text-small min-h-[2.75rem] text-ink wide:min-h-6">{card.line}</p>
       </div>
     </div>
   );

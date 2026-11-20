@@ -1,16 +1,18 @@
 # RRR-2 workaround record
 
-## Unverified: rendered comparison with the comps (plan step 17)
+## Partly verified: rendered comparison with the comps (plan step 17)
 
 - **Requirement:** the page matches the comps at 1280px and 390px, with no overlap or clipping, no sideways scrolling from 320px, and correct hero-card behavior after hydration.
-- **Why it is unverified:** no live server was available for a rendered check. `epic-implementer epic-server turn acquire --ticket RRR-2 --head <head> --wait 900` returned `unavailable` / `no_live_server` / `no_epic_server_for_this_run`, twice. This ticket's plan adds no browser harness (the testing owner's ticket does).
-- **Substitute delivered:** static and SSR checks only.
-  - Contrast ratios computed for every declared text and indicator pairing; all pass after one fix (focus ring on dark green, now with a white gap).
-  - Token, type-scale, breakpoint (768 / 1024 inclusive) and reduced-motion inspection of `app/app.css` and components.
-  - Production build served locally: `/` returns 200 with one `<h1>`, one `<main>`, all five section IDs, the default hero card, and no external hosts.
-  - Source compared by eye against comps 01, 02, 03, 12 and 18 (desktop and phone): hero card layout, step circles and footer color were corrected from them.
-- **Human step still owed (before merge):** run the app (`npm run build && npm start`), open `/` at 1280px and 390px, compare with comps 01–03, 12 and 18, check there is no horizontal scroll down to 320px, and check the hero card in a Denver, Los Angeles, New York and other time zone with no console errors.
+- **Why the epic server was not used:** `epic-implementer epic-server turn acquire --ticket RRR-2 --head <head> --wait 900` returned `unavailable` / `no_live_server` / `no_epic_server_for_this_run`, twice at the final head.
+- **Substitute delivered:** the production build served locally and rendered in the machine's own headless Chrome (no install). Observed:
+  - Screenshots at 1280px, 390px and 320px (the narrow widths through an iframe, so media queries see the real width): no horizontal scroll, hero and steps stack at phone widths, header text links hide, layout matches comps 01, 02, 03, 12 and 18 in structure and proportions. Two defects found this way (How-it-works heading overlapping the cards; hero art column too wide) were fixed.
+  - Hero card after hydration, with `TZ` set for Chrome: Denver, New York and Los Angeles show "Near you" with the right city and courts; Tokyo keeps the default card. No console or hydration messages were logged in any run.
+  - Static checks: WCAG contrast for 24 pairings (one fix: focus ring on dark green), type scale, 768/1024 breakpoints, reduced-motion.
+- **Not verified (human step before merge):**
+  - Pixel-level side-by-side comparison with the comps (spacing, exact type sizes, shadows). The hero card covers most of the court drawing at 320px; confirm that is acceptable.
+  - Keyboard focus ring appearance on every control.
+  - Live, finder and waitlist bodies: out of scope here, they are heading-only shells.
 
 ## Not part of this ticket
 
-Unit tests, the Playwright harness, the weather stub and CI e2e job belong to the separate testing owner. None exist in this branch yet.
+Unit tests, the Playwright harness, the weather stub and the CI e2e job belong to the separate testing owner. None exist in this branch yet.
