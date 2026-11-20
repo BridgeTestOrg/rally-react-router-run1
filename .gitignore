@@ -11,6 +11,4 @@
 .claude/settings.local.json
 docs/tmp/
 # Local SQLite database (created by a later ticket)
-data/rally.db
-data/rally.db-wal
-data/rally.db-shm
+/data/rally.db*
