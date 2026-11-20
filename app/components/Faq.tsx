@@ -10,7 +10,7 @@ export function Faq() {
         <div className="mt-8 max-w-3xl border-t border-line">
           {faq.items.map((item) => (
             <details key={item.q} className="group border-b border-line">
-              <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-3 text-[17px] font-semibold text-ink">
+              <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-4 py-3 text-lead font-semibold text-ink">
                 <span>{item.q}</span>
                 <span aria-hidden="true" className="relative size-4 shrink-0">
                   <span className="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 bg-court-2" />

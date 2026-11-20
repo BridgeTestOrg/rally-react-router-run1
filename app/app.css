@@ -136,6 +136,9 @@ body {
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
+  /* White gap between the element and the blue ring keeps the ring at 3:1 or
+     better against dark green surfaces, where blue alone is only 1.76:1. */
+  box-shadow: 0 0 0 2px #ffffff;
 }
 
 /* How-it-works step numbers: structural, not part of the spoken content. */
