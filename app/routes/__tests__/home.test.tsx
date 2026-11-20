@@ -8,7 +8,15 @@ test("home route renders the main navigation", async () => {
     {
       path: "/",
       Component: Home as never,
-      loader: () => ({ live: null, finder: null }),
+      loader: () => ({
+        live: Promise.resolve({ cities: [], stampText: "", allUnavailable: false }),
+        finder: {
+          filters: { state: "all", day: "today", time: "any", lights: false, parking: false },
+          rows: [],
+          openCount: 0,
+          day: "today",
+        },
+      }),
     },
   ]);
   render(<Stub initialEntries={["/"]} />);
