@@ -1,0 +1,143 @@
+{
+  "about": "Rally's six courts. Slot times are local to each court (24-hour HH:MM) and list the start of each free hour by weekday. Closures close a court for one local date.",
+  "openingHours": {
+    "withLights": { "open": "07:00", "close": "22:00" },
+    "withoutLights": { "open": "07:00", "close": "19:00" }
+  },
+  "courts": [
+    {
+      "id": "northridge-park",
+      "name": "Northridge Park",
+      "city": "Highlands Ranch",
+      "state": "CO",
+      "timezone": "America/Denver",
+      "lat": 39.5480,
+      "lon": -104.9690,
+      "courts": 4,
+      "lights": true,
+      "parking": true,
+      "slots": {
+        "mon": ["08:00", "12:00", "18:30"],
+        "tue": ["09:00", "18:00", "20:30"],
+        "wed": ["07:30", "17:00"],
+        "thu": ["10:00", "19:00"],
+        "fri": ["08:30", "17:30", "20:00"],
+        "sat": ["09:00", "14:00"],
+        "sun": ["10:00", "15:30"]
+      },
+      "closures": []
+    },
+    {
+      "id": "redstone-park",
+      "name": "Redstone Park",
+      "city": "Highlands Ranch",
+      "state": "CO",
+      "timezone": "America/Denver",
+      "lat": 39.5297,
+      "lon": -104.9386,
+      "courts": 6,
+      "lights": false,
+      "parking": true,
+      "slots": {
+        "mon": ["09:00", "16:00"],
+        "tue": ["08:00", "15:00"],
+        "wed": ["08:00", "10:30", "15:00"],
+        "thu": ["07:30", "13:00"],
+        "fri": ["11:00", "17:00"],
+        "sat": ["08:00", "11:00"],
+        "sun": ["09:30", "14:00"]
+      },
+      "closures": []
+    },
+    {
+      "id": "ocean-park",
+      "name": "Ocean Park",
+      "city": "Santa Monica",
+      "state": "CA",
+      "timezone": "America/Los_Angeles",
+      "lat": 34.0063,
+      "lon": -118.4823,
+      "courts": 2,
+      "lights": true,
+      "parking": false,
+      "slots": {
+        "mon": ["07:00", "17:30"],
+        "tue": ["10:00", "17:00", "19:30"],
+        "wed": ["09:00", "18:00"],
+        "thu": ["08:00", "12:30", "20:00"],
+        "fri": ["09:30", "19:00"],
+        "sat": ["10:00", "16:00"],
+        "sun": ["08:30", "13:00"]
+      },
+      "closures": []
+    },
+    {
+      "id": "memorial-park",
+      "name": "Memorial Park",
+      "city": "Santa Monica",
+      "state": "CA",
+      "timezone": "America/Los_Angeles",
+      "lat": 34.0223,
+      "lon": -118.4711,
+      "courts": 6,
+      "lights": true,
+      "parking": true,
+      "slots": {
+        "mon": ["10:00", "18:30"],
+        "tue": ["08:00", "18:00"],
+        "wed": ["07:00", "12:30", "19:00"],
+        "thu": ["09:00", "17:00"],
+        "fri": ["07:30", "16:00", "21:00"],
+        "sat": ["09:00", "13:00"],
+        "sun": ["11:00", "16:30"]
+      },
+      "closures": [
+        { "date": "2026-11-21", "reason": "resurfacing" }
+      ]
+    },
+    {
+      "id": "pier-a-park",
+      "name": "Pier A Park",
+      "city": "Hoboken",
+      "state": "NJ",
+      "timezone": "America/New_York",
+      "lat": 40.7370,
+      "lon": -74.0283,
+      "courts": 3,
+      "lights": true,
+      "parking": false,
+      "slots": {
+        "mon": ["07:00", "19:30"],
+        "tue": ["12:00", "20:30"],
+        "wed": ["07:30", "18:30"],
+        "thu": ["11:00", "17:00"],
+        "fri": ["08:00", "20:00"],
+        "sat": ["09:30", "13:00", "17:00"],
+        "sun": ["10:30", "15:00"]
+      },
+      "closures": []
+    },
+    {
+      "id": "church-square-park",
+      "name": "Church Square Park",
+      "city": "Hoboken",
+      "state": "NJ",
+      "timezone": "America/New_York",
+      "lat": 40.7425,
+      "lon": -74.0306,
+      "courts": 2,
+      "lights": false,
+      "parking": false,
+      "slots": {
+        "mon": ["08:30", "15:00"],
+        "tue": ["09:00", "16:00"],
+        "wed": ["08:00", "11:30"],
+        "thu": ["10:00", "17:30"],
+        "fri": ["07:30", "14:00"],
+        "sat": ["10:00"],
+        "sun": ["09:00", "12:00"]
+      },
+      "closures": []
+    }
+  ]
+}
