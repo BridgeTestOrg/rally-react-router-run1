@@ -1,0 +1,23 @@
+# Bridge API repository MCP manifest (committed, secret-free, machine-agnostic).
+#
+# Inherited by every git worktree; start-tickets worktree provisioning reads it
+# to decide which Bridge API MCP registrations to write. Do not add credentials,
+# connection URLs, or machine-specific paths here — those are resolved at runtime.
+#
+# Teammates: this file does not connect your editor. Run
+# "npx -y @bridge_gpt/mcp-server install" once in this folder.
+
+repo_name = "rally-react-router-run1"
+
+[[mcp]]
+target = "bapi"
+
+# Optional: declare additional (Tier-2) MCP targets here. Each non-bapi target
+# names the real command/args to launch and the credential-store bundle that
+# supplies its secrets — never the secrets themselves. Uncomment and adapt:
+#
+# [[mcp]]
+# target = "sfcc"
+# command = "npx"
+# args = ["-y", "@salesforce/b2c-dx-mcp"]
+# secret_bundle = "sfcc:YOUR_SANDBOX_ID"

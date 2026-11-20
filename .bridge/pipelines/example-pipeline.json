@@ -1,0 +1,41 @@
+{
+  "name": "Example Pipeline",
+  "description": "A sample pipeline demonstrating all step types and features.",
+  "variables": [
+    "ticket_key"
+  ],
+  "steps": [
+    {
+      "type": "mcp_call",
+      "tool": "get_ticket",
+      "params": {
+        "ticket_number": "{ticket_key}"
+      },
+      "description": "Fetch the ticket details from Jira",
+      "on_error": "halt"
+    },
+    {
+      "type": "agent_task",
+      "instruction": "Read the ticket details above and summarize the key requirements in 3 bullet points.",
+      "description": "Summarize ticket requirements",
+      "on_error": "halt"
+    },
+    {
+      "type": "agent_task",
+      "instruction": "Search the codebase for files related to the ticket and list the top 5 most relevant files.",
+      "description": "Find relevant source files",
+      "on_error": "warn_and_continue"
+    },
+    {
+      "type": "mcp_call",
+      "tool": "add_comment",
+      "params": {
+        "ticket_number": "{ticket_key}",
+        "comment_text": "Pipeline analysis complete. See agent output for details."
+      },
+      "description": "Post a summary comment to the ticket",
+      "on_error": "warn_and_continue",
+      "requires_approval": true
+    }
+  ]
+}
