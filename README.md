@@ -6,12 +6,12 @@ Rally shows which public outdoor pickleball courts in Highlands Ranch, Santa Mon
 
 - Server-rendered page at `/` with the header, hero, **How it works**, **FAQ** and footer.
 - A hydration-safe hero card: the server and first client render always show the default card; after mount the browser's time zone (Denver, Los Angeles or New York) swaps in the visitor's city. Other zones keep the default.
-- Heading-only shells for **Live conditions** (`#live`), **Court finder** (`#courts`) and **Waitlist** (`#waitlist`). Their loaders and action are placeholders returning `null`.
+- Heading-only shells for **Live conditions** (`#live`), **Court finder** (`#courts`) and **Waitlist** (`#waitlist`). Live and finder loaders are placeholders; the waitlist action validates and stores signups (see Waitlist storage).
 - All copy comes from `content/rally.json` via `app/lib/content.ts`. The root error boundary is the one exception.
 - Content and SVG assets are bundled with the build, and fonts (Bricolage Grotesque, Inter) are self-hosted through `@fontsource`; the page makes no font CDN requests.
 - The page is light-only: it ignores the visitor's dark-mode preference.
 
-Weather fetching, court finder behavior, waitlist persistence and the JSON endpoints belong to later tickets. This foundation makes no weather requests and sends no email.
+Weather fetching, court finder behavior, the JSON endpoints belong to later tickets. This foundation makes no weather requests and sends no email.
 
 ## Settings
 
@@ -102,3 +102,13 @@ npm test           # Vitest
 npm run typecheck
 npm run build
 ```
+
+## Waitlist storage
+
+Signups live in local SQLite (`node:sqlite`, no extra package) at `DATABASE_PATH` (default `data/rally.db`).
+
+- `npm run db:migrate` opens the database and applies pending migrations; the app also migrates automatically on first use. A missing parent directory is created. `*.db`, `-wal` and `-shm` files are git- and Docker-ignored.
+- Signup and migration timestamps come from `now()`, so `RALLY_NOW` controls them. A duplicate's date is shown in the original signup city's time zone.
+- The database uses WAL and waits up to about 3 seconds on lock contention; beyond that the form shows a sanitized, retryable error.
+- The container creates a writable `/app/data`. Mount a volume there if signups must survive container replacement.
+- Signup data stays in local SQLite. The app sends no email and makes no outbound signup requests.
