@@ -1,18 +1,29 @@
-# Welcome to React Router!
+# Rally
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Rally shows which public outdoor pickleball courts in Highlands Ranch, Santa Monica and Hoboken are open and playable. It is a React Router (framework mode, SSR) app styled with Tailwind CSS v4.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## What is implemented
 
-## Features
+- Server-rendered page at `/` with the header, hero, **How it works**, **FAQ** and footer.
+- A hydration-safe hero card: the server and first client render always show the default card; after mount the browser's time zone (Denver, Los Angeles or New York) swaps in the visitor's city. Other zones keep the default.
+- Heading-only shells for **Live conditions** (`#live`), **Court finder** (`#courts`) and **Waitlist** (`#waitlist`). Their loaders and action are placeholders returning `null`.
+- All copy comes from `content/rally.json` via `app/lib/content.ts`. The root error boundary is the one exception.
+- Content and SVG assets are bundled with the build, and fonts (Bricolage Grotesque, Inter) are self-hosted through `@fontsource`; the page makes no font CDN requests.
+- The page is light-only: it ignores the visitor's dark-mode preference.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Weather fetching, court finder behavior, waitlist persistence and the JSON endpoints belong to later tickets. This foundation makes no weather requests and sends no email.
+
+## Settings
+
+Read only in `app/lib/config.server.ts`, which is also the only source of the app's current time (`now()`).
+
+| Setting | Default | Notes |
+|---|---|---|
+| `WEATHER_URL` | `https://api.weather.gov` | Must be an absolute http(s) URL. |
+| `RALLY_NOW` | unset (real clock) | Freezes time. An ISO instant with an explicit offset or `Z`, e.g. `2026-11-17T17:40:00-07:00`. |
+| `DATABASE_PATH` | `data/rally.db` | SQLite file; git ignores it and its `-wal`/`-shm` files. |
+
+Empty or whitespace-only values count as unset. A nonblank invalid `WEATHER_URL` or `RALLY_NOW` throws a configuration error that names the setting, never silently falling back to a default or the real clock.
 
 ## Getting Started
 
@@ -81,10 +92,6 @@ Make sure to deploy the output of `npm run build`
 ## Styling
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
 
 ## Requirements and tests
 
